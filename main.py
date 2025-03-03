@@ -42,7 +42,7 @@ def main(): # MAIN FUNCTION
     run = True
 
     text1 = Text_box(window, SCREEN_HEIGHT//2 -50,SCREEN_WIDTH//2 - 50,100,100,"THAYER YANG", draw_rect=False)
-    text2 = Text_box(window, SCREEN_HEIGHT//2 -50,SCREEN_WIDTH//2 +150,100,100,"TC CENTRAL", draw_rect=False)
+    text2 = Text_box(window, SCREEN_HEIGHT//2 -50,SCREEN_WIDTH//2 +50,100,100,"TC CENTRAL", draw_rect=False)
 
     text1.bolden()
     text1.italicize()
