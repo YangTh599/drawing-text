@@ -41,8 +41,9 @@ def main(): # MAIN FUNCTION
 
     run = True
 
-    text1 = Text_box(window, SCREEN_HEIGHT//2 -50,SCREEN_WIDTH//2 - 50,100,100,"THAYER YANG", draw_rect=False)
+    text1 = Text_box(window, SCREEN_HEIGHT//2 -50,SCREEN_WIDTH//2 -50,100,100,"THAYER YANG", draw_rect=False)
     text2 = Text_box(window, SCREEN_HEIGHT//2 -50,SCREEN_WIDTH//2 +50,100,100,"TC CENTRAL", draw_rect=False)
+    text3 = Text_box(window, 10,10,100,100,"12", draw_rect=False,)
 
     text1.bolden()
     text1.italicize()
@@ -58,7 +59,7 @@ def main(): # MAIN FUNCTION
         #         run = False
         #         break
         
-        draw(window,[text1, text2]) # UPDATES SCREEN
+        draw(window,[text1, text2,text3]) # UPDATES SCREEN
 
     #PROGRAM QUITS WHILE RUN IS FALSE
     pygame.quit()
@@ -66,7 +67,7 @@ def main(): # MAIN FUNCTION
 
 class Text_box():
 
-    def __init__(self, window, x, y, width, height, text, font="Comic Sans MS",text_size = 24, draw_rect = True):
+    def __init__(self, window, x, y, width, height, text, font="Comic Sans MS",text_size = 24, draw_rect = True, centered = False):
         self.rect = pygame.Rect(x,y,width,height)
         self.window = window
 
@@ -76,6 +77,7 @@ class Text_box():
         self.width = width
 
         self.draw_rect = draw_rect
+        self.centered = centered
 
         self.text = text
         self.text_size = text_size
@@ -100,8 +102,11 @@ class Text_box():
         text = self.text_font.render(self.text, True, WHITE)
         if self.draw_rect:
             pygame.draw.rect(self.window, (50, 200, 50), self.rect)
-        text_rect = text.get_rect(center=self.rect.center)
-        self.window.blit(text, text_rect)
+        if self.centered:
+            text_rect = text.get_rect(center=self.rect.center)
+            self.window.blit(text, text_rect)
+        else:
+            self.window.blit(text, [self.x,self.y])
 
 if __name__ == "__main__": 
     main() # EXECUTES MAIN
